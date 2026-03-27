@@ -20,7 +20,6 @@ async def startup():
         await conn.run_sync(Base.metadata.create_all)
 
 
-# CATEGORY API -----------------------------------------------------------------------
 @app.post("/categories/", response_model=CategoryResponse)
 async def create_category(data: CategoryCreate, db: AsyncSession = Depends(get_db)):
     return await crud.create_category(db, data)
@@ -47,7 +46,7 @@ async def delete_category(id: int, db: AsyncSession = Depends(get_db)):
     return {"message": "Deleted"}
 
 
-# NEWS API ------------------------------------------------------------------
+
 @app.post("/news/", response_model=NewsResponse)
 async def create_news(
     title: str = Form(...),
