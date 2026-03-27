@@ -5,7 +5,6 @@ from models import Category, News
 from schemas import CategoryCreate
 
 
-# CATEGORY CRUD ----------------------------------------------------------------
 async def create_category(db: AsyncSession, data: CategoryCreate):
     category = Category(**data.model_dump())
     db.add(category)
@@ -44,7 +43,7 @@ async def delete_category(db: AsyncSession, category_id: int):
     return category
 
 
-# NEWS CRUD -------------------------------------------------------------------
+
 async def create_news(db: AsyncSession, data: dict):
     news = News(**data)
     db.add(news)
